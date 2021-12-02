@@ -21,19 +21,16 @@ fn part_1(input: &str) -> usize {
 /// Consider sums of a three-measurement sliding window.
 /// How many sums are larger than the previous sum?
 fn part_2(input: &str) -> usize {
-    let nums: Vec<usize> = input
+    let (count, _last) = input
         .lines()
         .map(|x| x.parse::<usize>().unwrap())
-        .collect();
-    let (count, _last) = nums
-        .iter()
-        .scan((nums[0], nums[1], nums[2]), |win, &next| {
+        .scan((usize::MAX, usize::MAX, usize::MAX), |win, next| {
             win.0 = win.1;
             win.1 = win.2;
             win.2 = next;
             Some((win.0, win.1, win.2))
         })
-        .map(|(a, b, c)| a + b + c)
+        .map(|(a, b, c)| a.saturating_add(b).saturating_add(c))
         .fold((0, usize::MAX), |mut state, depth| {
             if depth > state.1 {
                 state.0 += 1;
