@@ -83,6 +83,8 @@ The bit criteria depends on which type of rating value you want to find:
   current bit position, and keep only numbers with that bit in that position. If
   0 and 1 are equally common, keep values with a 0 in the position being
   considered.
+- NOTE: Only consider the most or least common bit value for the current set;
+  it depends on the numbers left after filtering out the list.
 
 For example, to determine the oxygen generator rating value using the same
 example diagnostic report from above:

@@ -1,0 +1,25 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# Elixir-Solutions
+
+## Day-1
+
+```elixir
+stream =
+  File.stream!("day_1/input.txt")
+  |> Stream.map(&String.to_integer(String.trim(&1)))
+  |> Stream.chunk_every(3, 1)
+  |> Stream.map(&Enum.sum/1)
+  |> Stream.chunk_every(2, 1, :discard)
+  |> Enum.count(fn [a, b] -> a < b end)
+```
+
+```output
+1571
+```
+
+## Day-4
+
+```elixir
+
+```
