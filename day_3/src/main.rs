@@ -3,7 +3,6 @@ fn main() {
     let input: Vec<&str> = input.lines().collect();
     println!("part 1: {}", part_1(input.clone()));
     println!("part 2: {}", part_2(input));
-    part2();
 }
 
 fn part_1(input: Vec<&str>) -> i32 {
